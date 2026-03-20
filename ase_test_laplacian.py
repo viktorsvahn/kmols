@@ -4,7 +4,7 @@
 from ase.io import read, write
 import numpy as np
 import tol_colors as tc
-cset = tc.bright
+cset = tc.Bright
 
 from test import KMeans
 
@@ -42,16 +42,19 @@ def num_clusters(X,cutoff=None):
 
 
 if __name__ == '__main__':
-	atoms = read('SD22NQQ_wB97XD3BJ_Psi4.xyz', ':')
+	atoms = read('SD22NQQ1_wB97XD3BJ_Psi4.xyz', ':100')
 
 	i = 0
+	t = []
 	for a in atoms:
 		km = KMeans()
 		#print(a.positions)
-		nmols = num_clusters(a.positions,cutoff=7)
-		print(nmols==a.info['Nmols'],nmols,a.info['Nmols'])
+		nmols = num_clusters(a.positions,cutoff=3)
+		t.append(nmols==a.info['Nmols'])
 		#km.fit(a.positions,a.info['Nmols'], n_init=10, tol=0.005)
 		#a.arrays['molID'] = km.labels
 		i += 1
 	#print(i)
+	n_true = sum(t)
+	print('accuracy=', n_true/len(t))
 	#write('out.xyz',atoms)

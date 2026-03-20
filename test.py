@@ -220,6 +220,7 @@ class KMeans:
 		self.clusters = best['clusters']
 		self.centroids = best['centroids']
 		self.labels = best['labels']
+		self.num_unique = len(set(self.labels))
 
 
 	def predict(self,X):
