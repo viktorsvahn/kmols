@@ -9,6 +9,21 @@ cset = tc.bright
 #from aseMolec import anaAtoms as aa
 
 
+
+"""
+This method does not really work that well...
+
+The problem seems to be non-spherical data and overall unevenly shaped 
+clusters.
+
+Better to use graph based methods like chained overlap of sets. Look into the
+cluster algorithm I made earlier!
+"""
+
+
+
+
+
 from test import KMeans
 
 def get_com(atoms, IDs=None):
